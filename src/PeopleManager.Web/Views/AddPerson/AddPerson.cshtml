@@ -1,0 +1,8 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model PeopleManager.Web.Models.AddPerson.AddPersonModel
+
+<h2>Person added</h2>
+
+<p>@Html.DisplayFor(model => model.AddedPerson.Name)</p>
+
+@Html.ActionLink("Add someone else", "Index")

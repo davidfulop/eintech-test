@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model PeopleManager.Web.Models.AddPerson.AddPersonIndexModel
+@{
+    ViewData["Title"] = "People Manager";
+}
+
+<div class="text-center">
+    <h1 class="display-4">People manager</h1>
+</div>
+@using (Html.BeginForm("AddPerson", "AddPerson", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>@Html.EditorFor(model => model.NewPerson.Name)
+                    <span asp-validation-for="NewPerson.Name" class="text-danger"></span></td>
+            </tr>
+            <tr>
+                <td>Employee:</td>
+                <td>@Html.DropDownListFor(model => model.NewPerson.DepartmentId,
+                        new SelectList(Model.Departments, "DepartmentId", "Name"))</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add" id="AddPersonButton"/></td>
+            </tr>
+        </table>
+    </div>
+}

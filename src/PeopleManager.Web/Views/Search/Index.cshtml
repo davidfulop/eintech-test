@@ -1,0 +1,45 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model PeopleManager.Web.Models.Search.SearchIndexModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Search results</title>
+</head>
+<body>
+    <h2>Search results:</h2>
+    <div>
+        <p>People:<br/>
+            <table id="peopleTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Added at</th>
+                    <th>Department</th>
+                </tr>
+                @foreach(var p in Model.People)
+                {
+                    <tr>
+                        <td>@p.Name</td>
+                        <td>@p.AddedAt</td>
+                        <td>@p.Department.Name</td>  
+                    </tr>
+                }
+            </table>
+        </p>
+        <p>Departments:<br/>
+            <table id="departmentsTable">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                @foreach(var p in Model.Departments)
+                {
+                    <tr>
+                        <td>@p.Name</td>
+                    </tr>
+                }
+            </table>
+        </p>
+    </div>
+</body>
+</html>
